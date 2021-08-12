@@ -100,7 +100,7 @@ function wl_page( $slug ){
                 if($slug['section'] == 'top-influencer'):
                     if (have_rows('top_influencer')):
                             while (have_rows('top_influencer')) : the_row();
-                                   $data['section_title'] = get_sub_field('section_title', $post->ID);
+                                   $data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
                                    if(have_rows('influence_list')):
                                       while(have_rows('influence_list')): the_row();
                                         $photo = get_sub_field('photo');
