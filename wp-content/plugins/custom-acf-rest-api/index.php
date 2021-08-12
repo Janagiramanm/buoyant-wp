@@ -115,6 +115,24 @@ function wl_page( $slug ){
                     endif;
                 endif;
 
+                if($slug['section'] == 'articles-stories'):
+                    if (have_rows('aritcles_and_stories')):
+                            while (have_rows('aritcles_and_stories')) : the_row();
+                                   $data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
+                                   if(have_rows('influence_list')):
+                                      while(have_rows('influence_list')): the_row();
+                                        $image = get_sub_field('image');
+                                        $data[] = [
+                                            'title' => get_sub_field('title', $post->ID),
+                                            'description' => get_sub_field('description', $post->ID),
+                                            'image' => $image['url']                                           
+                                        ];
+                                       endwhile;
+                                    endif;
+                            endwhile;
+                    endif;
+                endif;
+
            
         endwhile;
     endif;
