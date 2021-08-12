@@ -637,3 +637,22 @@ function twentytwentyone_add_ie_class() {
 	<?php
 }
 add_action( 'wp_footer', 'twentytwentyone_add_ie_class' );
+
+function wpb_custom_new_menu() {
+	register_nav_menus(
+	  array(
+		'main-menu' => __( 'Main Menu' ),
+		'footer-menu' => __( 'Footer Menu' ),
+		'company-menu' => __( 'Company Menu' ),
+		'solution-service-menu' => __( 'Solution and Service Menu' )
+	  )
+	);
+  }
+  add_action( 'init', 'wpb_custom_new_menu' );
+  
+  if( function_exists('acf_add_options_page') ) {
+  
+	acf_add_options_page();
+	// acf_add_options_sub_page('Footer');
+  
+  }
