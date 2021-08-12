@@ -54,11 +54,12 @@ function wl_post( $slug ) {
 	return $data;
 }
 
-// Used in this video https://www.youtube.com/watch?v=76sJL9fd12Y
-function wl_products() {
-	$args = [
-		'numberposts' => 99999,
-		'post_type' => 'products'
+
+function wl_page( $slug ) {
+	
+    $args = [
+		'name' => $slug['slug'],
+		'post_type' => 'page'
 	];
 
 	$posts = get_posts($args);
@@ -70,16 +71,26 @@ function wl_products() {
 		$data[$i]['id'] = $post->ID;
 		$data[$i]['title'] = $post->post_title;
         $data[$i]['slug'] = $post->post_name;
-        $data[$i]['price'] = get_field('price', $post->ID);
-        $data[$i]['delivery'] = get_field('delivery', $post->ID);
-		$i++;
+        $j=1;
+        if (have_rows('hero_slider')):
+            while (have_rows('hero_slider')) : the_row();
+
+                $image = get_sub_field('banner_image');
+                $data[$i][$j]['title'] = get_field('title', $post->ID);
+                $data[$i][$j]['sub_title'] = get_field('sub_title', $post->ID);
+                $data[$i][$j]['banner_img'] =$image['url'];
+
+           $j++;
+            endwhile;
+        endif;
+        $i++;
 	}
 
 	return $data;
 }
 
 add_action('rest_api_init', function() {
-	register_rest_route('/v1', 'posts', [
+	register_rest_route('wl/v1', 'posts', [
 		'methods' => 'GET',
 		'callback' => 'wl_posts',
 	]);
@@ -89,9 +100,8 @@ add_action('rest_api_init', function() {
 		'callback' => 'wl_post',
     ) );
     
-    // Used in this video: https://www.youtube.com/watch?v=76sJL9fd12Y	
-    register_rest_route('wl/v1', 'products', [
+    register_rest_route('wl/v1', 'page/(?P<slug>[a-zA-Z0-9-]+)', [
 		'methods' => 'GET',
-		'callback' => 'wl_products',
+		'callback' => 'wl_page',
 	]);
 });
