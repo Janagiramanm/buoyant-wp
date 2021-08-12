@@ -83,6 +83,22 @@ function wl_page( $slug ){
                         endif;
                 endif;
 
+                if($slug['section'] == 'about-us'):
+                    if (have_rows('about_us')):
+                            
+                            while (have_rows('about_us')) : the_row();
+                                $image = get_sub_field('image');
+                                $data['title'] = get_sub_field('title', $post->ID);
+                                $data['description'] = get_sub_field('sub_title', $post->ID);
+                                $data['image'] =$image['url'];
+                                $data['image_title'] = get_sub_field('image_title', $post->ID);
+
+                           
+                        endwhile;
+                    endif;
+
+                endif;
+
            
         endwhile;
     endif;
