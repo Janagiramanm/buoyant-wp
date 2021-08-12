@@ -73,9 +73,9 @@ function wl_page( $slug ){
                         $i=1;
                         while (have_rows('hero_slider')) : the_row();
                             $image = get_sub_field('banner_image');
-                            $data['hero_section']['title'] = get_sub_field('title', $post->ID);
-                            $data['hero_section']['sub_title'] = get_sub_field('sub_title', $post->ID);
-                            $data['hero_section']['banner_img'] =$image['url'];
+                            $data['hero_section'][$i]['title'] = get_sub_field('title', $post->ID);
+                            $data['hero_section'][$i]['sub_title'] = get_sub_field('sub_title', $post->ID);
+                            $data['hero_section'][$i]['banner_img'] =$image['url'];
 
                          $i++;
                     endwhile;
