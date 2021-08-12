@@ -134,7 +134,7 @@ add_action('rest_api_init', function() {
 		'callback' => 'wl_post',
     ) );
     
-    register_rest_route('wl/v1', 'page/(?P<slug>[a-zA-Z0-9-]+/<section>[a-zA-Z0-9-])', [
+    register_rest_route('wl/v1', 'page/(?P<slug>[a-zA-Z0-9-]+&<section>[a-zA-Z0-9-])', [
 		'methods' => 'GET',
 		'callback' => 'wl_page',
 	]);
