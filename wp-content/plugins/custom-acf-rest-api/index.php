@@ -69,16 +69,18 @@ function wl_page( $slug ){
     if ( $page->have_posts() ) :
         while ( $page->have_posts() ) : $page->the_post(); 
 
-                 if (have_rows('hero_slider')):
-                        $i=1;
-                        while (have_rows('hero_slider')) : the_row();
-                            $image = get_sub_field('banner_image');
-                            $data['hero_section'][$i]['title'] = get_sub_field('title', $post->ID);
-                            $data['hero_section'][$i]['sub_title'] = get_sub_field('sub_title', $post->ID);
-                            $data['hero_section'][$i]['banner_img'] =$image['url'];
+                if($slug['section'] == 'hero_slider'):
+                        if (have_rows('hero_slider')):
+                                $i=1;
+                                while (have_rows('hero_slider')) : the_row();
+                                    $image = get_sub_field('banner_image');
+                                    $data['hero_section'][$i]['title'] = get_sub_field('title', $post->ID);
+                                    $data['hero_section'][$i]['sub_title'] = get_sub_field('sub_title', $post->ID);
+                                    $data['hero_section'][$i]['banner_img'] =$image['url'];
 
-                         $i++;
-                    endwhile;
+                                $i++;
+                            endwhile;
+                        endif;
                 endif;
 
            
@@ -89,39 +91,6 @@ function wl_page( $slug ){
 }
 
 
-function wl_page111( $slug ) {
-	
-    $args = [
-		'name' => $slug['slug'],
-		'post_type' => 'page'
-	];
-
-	$posts = get_posts($args);
-
-	$data = [];
-	$i = 0;
-
-	foreach($posts as $post) {
-		$data[$i]['id'] = $post->ID;
-		$data[$i]['title'] = $post->post_title;
-        $data[$i]['slug'] = $post->post_name;
-        $j=1;
-        //if (have_rows('hero_slider')):
-            while (have_rows('hero_slider')) : the_row();
-
-                $image = get_sub_field('banner_image');
-                $data[$i][$j]['title'] = get_field('title', $post->ID);
-                $data[$i][$j]['sub_title'] = get_field('sub_title', $post->ID);
-                $data[$i][$j]['banner_img'] =$image['url'];
-
-           $j++;
-            endwhile;
-        //endif;
-        $i++;
-	}
-
-	return $data;
-}
 
 add_action('rest_api_init', function() {
 	register_rest_route('wl/v1', 'posts', [
