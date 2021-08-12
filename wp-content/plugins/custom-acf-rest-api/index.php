@@ -119,8 +119,8 @@ function wl_page( $slug ){
                     if (have_rows('aritcles_and_stories')):
                             while (have_rows('aritcles_and_stories')) : the_row();
                                    $data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
-                                   if(have_rows('influence_list')):
-                                      while(have_rows('influence_list')): the_row();
+                                   if(have_rows('article_list')):
+                                      while(have_rows('article_list')): the_row();
                                         $image = get_sub_field('image');
                                         $data[] = [
                                             'title' => get_sub_field('title', $post->ID),
