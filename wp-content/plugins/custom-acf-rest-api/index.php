@@ -72,7 +72,7 @@ function wl_page( $slug ) {
 		$data[$i]['title'] = $post->post_title;
         $data[$i]['slug'] = $post->post_name;
         $j=1;
-        if (have_rows('hero_slider')):
+        //if (have_rows('hero_slider')):
             while (have_rows('hero_slider')) : the_row();
 
                 $image = get_sub_field('banner_image');
@@ -82,7 +82,7 @@ function wl_page( $slug ) {
 
            $j++;
             endwhile;
-        endif;
+        //endif;
         $i++;
 	}
 
