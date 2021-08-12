@@ -133,6 +133,24 @@ function wl_page( $slug ){
                     endif;
                 endif;
 
+                if($slug['section'] == 'client-experience'):
+                    if (have_rows('client_experience')):
+                            while (have_rows('client_experience')) : the_row();
+                                   $data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
+                                   if(have_rows('customer_experience_list')):
+                                      while(have_rows('customer_experience_list')): the_row();
+                                        $image = get_sub_field('photo');
+                                        $data[] = [
+                                            'content' => get_sub_field('content', $post->ID),
+                                            'customer_name' => get_sub_field('customer_name', $post->ID),
+                                            'photo' => $image['url']                                           
+                                        ];
+                                       endwhile;
+                                    endif;
+                            endwhile;
+                    endif;
+                endif;
+
            
         endwhile;
     endif;
