@@ -54,8 +54,42 @@ function wl_post( $slug ) {
 	return $data;
 }
 
+function wl_page( $slug ){
+    global $wp;
+    global $post;
+    $args   =   array(
+                'post_type'         =>  'page',
+                'post_status'       =>  'publish',
+                'name' => $slug['slug'],
+                );
+    
+    $data = [];
+    $page = new WP_Query( $args );
+    if ( $page->have_posts() ) :
+        while ( $page->have_posts() ) : $page->the_post(); 
 
-function wl_page( $slug ) {
+                 $data['hero_section'] = [];
+                 if (have_rows('hero_slider')):
+                        $i=1;
+                        while (have_rows('hero_slider')) : the_row();
+                            $image = get_sub_field('banner_image');
+                            $data[$i]['title'] = get_field('title', $post->ID);
+                            $data[$i]['sub_title'] = get_field('sub_title', $post->ID);
+                            $data[$i]['banner_img'] =$image['url'];
+
+                         $i++;
+                    endwhile;
+                endif;
+
+           
+        endwhile;
+    endif;
+    
+    return $data;
+}
+
+
+function wl_page111( $slug ) {
 	
     $args = [
 		'name' => $slug['slug'],
