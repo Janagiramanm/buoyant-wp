@@ -69,7 +69,7 @@ function wl_page( $slug ){
     if ( $page->have_posts() ) :
         while ( $page->have_posts() ) : $page->the_post(); 
 
-                if($slug['section'] == 'hero_slider'):
+                if($slug['section'] == 'hero-section'):
                         if (have_rows('hero_slider')):
                                 $i=1;
                                 while (have_rows('hero_slider')) : the_row();
