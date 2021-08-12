@@ -71,17 +71,16 @@ function wl_page( $slug ){
 
                 if($slug['section'] == 'hero-section'):
                         if (have_rows('hero_slider')):
-                                $i=1;
+                               
                                 while (have_rows('hero_slider')) : the_row();
                                     $image = get_sub_field('banner_image');
                                     $data[] = [
-                                                 'id'=> $i,
                                                  'title' => get_sub_field('title', $post->ID),
                                                  'sub_title' => get_sub_field('sub_title', $post->ID),
-                                                 'banner_img' => get_sub_field('banner_img', $post->ID)
+                                                 'banner_img' => $image['url']
                                              ];
                                     
-                                 $i++;
+                            
                               
                             endwhile;
                         endif;
@@ -89,22 +88,19 @@ function wl_page( $slug ){
 
                 if($slug['section'] == 'about-us'):
                     if (have_rows('about_us')):
-                            
+                            $i=1;
                             while (have_rows('about_us')) : the_row();
                                 $image = get_sub_field('image');
                                 $data[] = [
-                                    'id'=> $i,
+                                    
                                     'title' => get_sub_field('title', $post->ID),
                                     'description' => get_sub_field('description', $post->ID),
                                     'image' => $image['url'],
                                     'image_title' => get_sub_field('image_title', $post->ID)
                                 ];
                        
-                                // $data['title'] = get_sub_field('title', $post->ID);
-                                // $data['description'] = get_sub_field('description', $post->ID);
-                                // $data['image'] = $image['url'];
-                                // $data['image_title'] = get_sub_field('image_title', $post->ID);
-
+                                
+                            
                            
                         endwhile;
                     endif;
