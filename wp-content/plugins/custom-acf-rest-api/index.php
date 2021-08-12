@@ -74,9 +74,9 @@ function wl_page( $slug ){
                                 $i=1;
                                 while (have_rows('hero_slider')) : the_row();
                                     $image = get_sub_field('banner_image');
-                                    $data[$i]['title'] = get_sub_field('title', $post->ID);
-                                    $data[$i]['sub_title'] = get_sub_field('sub_title', $post->ID);
-                                    $data[$i]['banner_img'] =$image['url'];
+                                    $data['title'] = get_sub_field('title', $post->ID);
+                                    $data['sub_title'] = get_sub_field('sub_title', $post->ID);
+                                    $data['banner_img'] =$image['url'];
 
                                 $i++;
                             endwhile;
@@ -103,7 +103,7 @@ function wl_page( $slug ){
         endwhile;
     endif;
     
-    return array(json_encode($data));
+    return array($data);
 }
 
 
