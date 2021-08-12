@@ -103,7 +103,7 @@ function wl_page( $slug ){
         endwhile;
     endif;
     
-    return json_encode($data);
+    return [$data];
 }
 
 
