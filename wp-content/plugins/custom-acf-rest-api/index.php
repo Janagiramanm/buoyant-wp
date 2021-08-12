@@ -92,10 +92,18 @@ function wl_page( $slug ){
                             
                             while (have_rows('about_us')) : the_row();
                                 $image = get_sub_field('image');
-                                $data['title'] = get_sub_field('title', $post->ID);
-                                $data['description'] = get_sub_field('description', $post->ID);
-                                $data['image'] =$image['url'];
-                                $data['image_title'] = get_sub_field('image_title', $post->ID);
+                                $data[] = [
+                                    'id'=> $i,
+                                    'title' => get_sub_field('title', $post->ID),
+                                    'description' => get_sub_field('description', $post->ID),
+                                    'image' => $image['url'],
+                                    'image_title' => get_sub_field('image_title', $post->ID)
+                                ];
+                       
+                                // $data['title'] = get_sub_field('title', $post->ID);
+                                // $data['description'] = get_sub_field('description', $post->ID);
+                                // $data['image'] = $image['url'];
+                                // $data['image_title'] = get_sub_field('image_title', $post->ID);
 
                            
                         endwhile;
@@ -107,7 +115,7 @@ function wl_page( $slug ){
         endwhile;
     endif;
     
-    return array($data);
+    return $data;
 }
 
 
