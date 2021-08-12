@@ -71,7 +71,6 @@ function wl_page( $slug ){
 
                 if($slug['section'] == 'hero-section'):
                         if (have_rows('hero_slider')):
-                               
                                 while (have_rows('hero_slider')) : the_row();
                                     $image = get_sub_field('banner_image');
                                     $data[] = [
@@ -79,32 +78,41 @@ function wl_page( $slug ){
                                                  'sub_title' => get_sub_field('sub_title', $post->ID),
                                                  'banner_img' => $image['url']
                                              ];
-                                    
-                            
-                              
                             endwhile;
                         endif;
                 endif;
 
                 if($slug['section'] == 'about-us'):
                     if (have_rows('about_us')):
-                            $i=1;
+                           
                             while (have_rows('about_us')) : the_row();
                                 $image = get_sub_field('image');
                                 $data[] = [
-                                    
-                                    'title' => get_sub_field('title', $post->ID),
-                                    'description' => get_sub_field('description', $post->ID),
-                                    'image' => $image['url'],
-                                    'image_title' => get_sub_field('image_title', $post->ID)
-                                ];
-                       
-                                
-                            
-                           
+                                            'title' => get_sub_field('title', $post->ID),
+                                            'description' => get_sub_field('description', $post->ID),
+                                            'image' => $image['url'],
+                                            'image_title' => get_sub_field('image_title', $post->ID)
+                                        ];
                         endwhile;
                     endif;
+                endif;
 
+                if($slug['section'] == 'top-influencer'):
+                    if (have_rows('top_influencer')):
+                            while (have_rows('top_influencer')) : the_row();
+                                   $data['section_title'] = get_sub_field('section_title', $post->ID);
+                                   if(have_rows('influence_list')):
+                                      while(have_rows('influence_list')): the_row();
+                                        $photo = get_sub_field('photo');
+                                        $data[] = [
+                                            'name' => get_sub_field('name', $post->ID),
+                                            'expert' => get_sub_field('expert', $post->ID),
+                                            'photo' => $photo['url']                                           
+                                        ];
+                                       endwhile;
+                                    endif;
+                            endwhile;
+                    endif;
                 endif;
 
            
