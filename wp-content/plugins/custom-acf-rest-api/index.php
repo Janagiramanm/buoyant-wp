@@ -151,6 +151,22 @@ function wl_page( $slug ){
                     endif;
                 endif;
 
+                if($slug['section'] == 'associate-accreditation'):
+                    if (have_rows('associate_accreditation')):
+                            while (have_rows('associate_accreditation')) : the_row();
+                                   $data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
+                                   if(have_rows('associate_logo')):
+                                      while(have_rows('associate_logo')): the_row();
+                                        $image = get_sub_field('logo');
+                                        $data[] = [
+                                            'logo' => $image['url']                                           
+                                        ];
+                                       endwhile;
+                                    endif;
+                            endwhile;
+                    endif;
+                endif;
+
            
         endwhile;
     endif;
