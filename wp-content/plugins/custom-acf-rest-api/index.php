@@ -100,7 +100,7 @@ function wl_page( $slug ){
                 if($slug['section'] == 'top-influencer'):
                     if (have_rows('top_influencer')):
                             while (have_rows('top_influencer')) : the_row();
-                                   $data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
+                                   //$data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
                                    if(have_rows('influence_list')):
                                       while(have_rows('influence_list')): the_row();
                                         $photo = get_sub_field('photo');
@@ -118,7 +118,7 @@ function wl_page( $slug ){
                 if($slug['section'] == 'articles-stories'):
                     if (have_rows('aritcles_and_stories')):
                             while (have_rows('aritcles_and_stories')) : the_row();
-                                   $data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
+                                   //$data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
                                    if(have_rows('article_list')):
                                       while(have_rows('article_list')): the_row();
                                         $image = get_sub_field('image');
@@ -136,7 +136,7 @@ function wl_page( $slug ){
                 if($slug['section'] == 'client-experience'):
                     if (have_rows('client_experience')):
                             while (have_rows('client_experience')) : the_row();
-                                   $data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
+                                  // $data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
                                    if(have_rows('customer_experience_list')):
                                       while(have_rows('customer_experience_list')): the_row();
                                         $image = get_sub_field('photo');
@@ -154,7 +154,7 @@ function wl_page( $slug ){
                 if($slug['section'] == 'associate-accreditation'):
                     if (have_rows('associate_accreditation')):
                             while (have_rows('associate_accreditation')) : the_row();
-                                   $data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
+                                //   $data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
                                    if(have_rows('associate_logo')):
                                       while(have_rows('associate_logo')): the_row();
                                         $image = get_sub_field('logo');
