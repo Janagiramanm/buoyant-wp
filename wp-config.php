@@ -26,7 +26,7 @@ define( 'DB_NAME', 'buoyant_wp' );
 define( 'DB_USER', 'root' );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', 'indiaNetiapps231$$' );
+define( 'DB_PASSWORD', 'HijkLMNO$$1234$$' );
 
 /** MySQL hostname */
 define( 'DB_HOST', 'localhost' );
