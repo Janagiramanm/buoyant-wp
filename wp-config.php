@@ -29,7 +29,7 @@ define( 'DB_USER', 'root' );
 define( 'DB_PASSWORD', 'HijkLMNO$$1234$$' );
 
 /** MySQL hostname */
-define( 'DB_HOST', 'buoyant-ubuntu-s-2vcpu-4gb-intel-blr1-01' );
+define( 'DB_HOST', '68.183.88.16' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8mb4' );
