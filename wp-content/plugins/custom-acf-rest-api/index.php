@@ -174,9 +174,9 @@ function wl_page( $slug ){
     return $data;
 }
 
-function get_menu(){
+function get_menu( $data ){
      // Replace your menu name, slug or ID carefully
-     return wp_get_nav_menu_items('Main Navigation');
+     return wp_get_nav_menu_items( $data[ 'slug' ] );
 }
 
 
@@ -196,8 +196,10 @@ add_action('rest_api_init', function() {
 		'callback' => 'wl_page',
 	]);
 
-    register_rest_route( 'wl/v1', 'menu', [
-        'methods' => 'GET',
-        'callback' => 'get_menu',
-     ] );
+    register_rest_route( 'wl/v1', '/menus/(?P<slug>[a-zA-Z0-9-]+)', 
+    array(
+      'methods'  => 'GET',
+      'callback' => 'get_menu'
+    )
+  );
 });
