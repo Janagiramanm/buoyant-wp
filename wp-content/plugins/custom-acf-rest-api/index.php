@@ -174,6 +174,9 @@ function wl_page( $slug ){
     return $data;
 }
 
+function get_menu(){
+    return wp_get_nav_menu_items('menu');
+}
 
 
 add_action('rest_api_init', function() {
@@ -191,4 +194,9 @@ add_action('rest_api_init', function() {
 		'methods' => 'GET',
 		'callback' => 'wl_page',
 	]);
+
+    register_rest_route( 'wl/v1', 'menu', [
+        'methods' => 'GET',
+        'callback' => 'get_menu',
+     ] );
 });
