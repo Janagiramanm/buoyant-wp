@@ -7,4 +7,4 @@
  *
  */
 
-require WPMU_PLUGIN_DIR."/buoyant-post-types/articles-and-stories.php";
+require WP_PLUGIN_DIR."/buoyant-post-types/articles-and-stories.php";
