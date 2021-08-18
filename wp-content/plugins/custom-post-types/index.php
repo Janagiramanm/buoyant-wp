@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: Custom Post Types
- * Description: Custom post types by Netiapps
+ * Plugin Name: Buoyant Custom Post Types
+ * Description: Buoyant Custom post types by Netiapps
  * Version: 1.0
  * Author: Janagiraman
  *
