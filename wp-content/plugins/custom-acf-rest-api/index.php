@@ -177,7 +177,7 @@ function wl_page( $slug ){
 function get_menu(){
      // Replace your menu name, slug or ID carefully
     //  return wp_get_nav_menu_items( $data[ 'slug' ] );
-     return wp_get_nav_menu_items( $data[ 'slug' ] );
+     return wp_get_nav_menu_items();
 }
 
 
