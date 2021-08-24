@@ -176,8 +176,9 @@ function wl_page( $slug ){
 
 function get_menu( $data ){
      // Replace your menu name, slug or ID carefully
-     return wp_get_nav_menu_items( $data[ 'slug' ] );
+     //return wp_get_nav_menu_items( $data[ 'slug' ] );
    //  return get_registered_nav_menus();
+   return wp_get_nav_menu_items('menu');
 }
 
 
@@ -198,7 +199,6 @@ add_action('rest_api_init', function() {
 	]);
 
      register_rest_route( 'wl/v1', '/menus/(?P<slug>[a-zA-Z0-9-]+)', 
-    //register_rest_route( 'wl/v1', '/menus', 
     array(
       'methods'  => 'GET',
       'callback' => 'get_menu'
