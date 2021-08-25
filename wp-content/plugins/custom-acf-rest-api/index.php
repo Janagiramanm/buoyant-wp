@@ -207,7 +207,7 @@ function get_article($data){
     endif;
     return $res_data;
 }
-}
+
 
 function contact_us($input){
     echo $name = $input['name'];
