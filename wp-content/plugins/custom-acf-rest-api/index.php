@@ -188,7 +188,7 @@ function get_article($data){
     $args   =   array(
                 'post_type'         =>  'articles-stories',
                 'post_status'       =>  'publish',
-                'post_title' => $title,
+                'title' => $title,
                 );
   
     $res_data = [];
