@@ -199,7 +199,8 @@ function get_article($data){
     if ( $page->have_posts() ) :
         // while ($page->have_posts()) : $page->the_post();
         echo 'OCMOOSHOS';
-        echo $post->ID;
+        $post_id = get_the_ID();
+        echo $post_id;
         if (have_rows('acf')):
             while (have_rows('acf')) : the_row();
              echo 'jjjjjjjjjjjjj';
