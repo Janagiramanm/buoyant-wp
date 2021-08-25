@@ -195,9 +195,11 @@ function get_article($data){
     $page = new WP_Query( $args );
     echo "Last SQL-Query: {$page->request}";
 
+
     if ( $page->have_posts() ) :
         // while ($page->have_posts()) : $page->the_post();
         echo 'OCMOOSHOS';
+        echo $post->ID;
         if (have_rows('acf')):
             while (have_rows('acf')) : the_row();
              echo 'jjjjjjjjjjjjj';
