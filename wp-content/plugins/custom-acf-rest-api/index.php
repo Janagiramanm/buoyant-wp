@@ -193,22 +193,7 @@ function get_article($data){
   
     $res_data = [];
     $page = new WP_Query( $args );
-    echo "Last SQL-Query: {$page->request}";
-
-    // $args = [
-	// 	'title' => $title,
-	// 	'post_type' => 'articles-stories'
-	// ];
-
-	// $res = get_posts($args);
-
-//    echo '<pre>';
-//    print_r($res);
-
-//    $banner_img = get_field('banner_image', $res[0]->ID);
-//    $description = get_field('description', $res[0]->ID);
-//    print_r($banner_img);
-//    print_r($description);
+    
     if ( $page->have_posts() ) :
          while ($page->have_posts()) : $page->the_post();
               if(have_rows('articles_stories')):
