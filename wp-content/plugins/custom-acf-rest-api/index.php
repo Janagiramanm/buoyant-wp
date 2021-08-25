@@ -213,8 +213,8 @@ function get_article($data){
          while ($page->have_posts()) : $page->the_post();
                  echo $post->ID;
                 /// $pid = the_post_ID();
-                 $banner_img = get_field('banner_image', $post->ID);
-                 print_r($banner_img);
+                 $article_grp = acf_get_field_group($post->ID);
+                 print_r($article_grp);
                  //echo the_post_ID();
         endwhile;
         // echo 'OCMOOSHOS';
