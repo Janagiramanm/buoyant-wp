@@ -200,6 +200,8 @@ function get_article($data){
         // while ($page->have_posts()) : $page->the_post();
         echo 'OCMOOSHOS';
         $post_id = get_the_ID();
+        echo '<pre>';
+        print_r($page->have_posts);
         echo $post_id;
         if (have_rows('acf')):
             while (have_rows('acf')) : the_row();
