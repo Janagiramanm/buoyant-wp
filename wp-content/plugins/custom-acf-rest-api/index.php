@@ -211,31 +211,15 @@ function get_article($data){
 //    print_r($description);
     if ( $page->have_posts() ) :
          while ($page->have_posts()) : $page->the_post();
-                 echo $post->ID;
-                /// $pid = the_post_ID();
-                 $article_grp = acf_get_field_group($post->ID);
-                 print_r($article_grp);
-                 //echo the_post_ID();
+              if(have_rows('articles_stories')):
+                    while(have_rows('articles_stories')): the_row();
+                       $res['title'] =  get_sub_field('title'); 
+                       $res['description'] =  get_sub_field('description');
+                 endwhile;
+              endif;
+               
         endwhile;
-        // echo 'OCMOOSHOS';
-        // $post_id = get_the_ID();
-        // echo '<pre>';
-        // print_r($page->have_posts);
-        // echo $post_id;
-        // if (have_rows('acf')):
-        //     while (have_rows('acf')) : the_row();
-        //      echo 'jjjjjjjjjjjjj';
-        //         // $data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
-                
-        //                 $image = get_sub_field('banner_image');
-        //                 $res_data[] = [
-        //                     'title' => get_sub_field('title', $post->ID),
-        //                     'description' => get_sub_field('description', $post->ID),
-        //                     'image' => $image['url']                                           
-        //                 ];
-                    
-        //     endwhile;
-        // endif;
+      
     endif;
     return $res;
 }
