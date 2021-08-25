@@ -181,8 +181,39 @@ function get_menu( $data ){
 //    return wp_get_nav_menu_items('menu');
 }
 
+function get_article($data){
+    global $wp;
+    global $post;
+    $args   =   array(
+                'post_type'         =>  'articles-stories',
+                'post_status'       =>  'publish',
+                'title' => $data['slug'],
+                );
+    
+    $res_data = [];
+    $page = new WP_Query( $args );
+    if (have_rows('aritcles_stories')):
+        while (have_rows('aritcles_stories')) : the_row();
+              // $data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
+              
+                    $image = get_sub_field('banner_image');
+                    $res_data[] = [
+                        'title' => get_sub_field('title', $post->ID),
+                        'description' => get_sub_field('description', $post->ID),
+                        'image' => $image['url']                                           
+                    ];
+                  
+        endwhile;
+    endif;
+    return $res_data;
+}
+}
+
 function contact_us($input){
     echo $name = $input['name'];
+    $email = $input['email'];
+    $mobile = $input['mobile'];
+    $booking_id = $input['booking_id'];
    echo $to = 'janagiraman@netiapps.com';
     $subject = 'The subject';
     $body = 'The email body content';
@@ -214,6 +245,13 @@ add_action('rest_api_init', function() {
       'callback' => 'get_menu'
     )
   );
+
+  register_rest_route( 'wl/v1', '/article/(?P<slug>[a-zA-Z0-9-]+)', 
+    array(
+        'methods'  => 'GET',
+        'callback' => 'get_article'
+    )
+    );
 
   register_rest_route( 'wl/v1', '/contact-us', 
     array(
