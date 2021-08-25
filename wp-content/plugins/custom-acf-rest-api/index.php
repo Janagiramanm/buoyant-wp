@@ -182,6 +182,7 @@ function get_menu( $data ){
 }
 
 function contact_us(){
+    echo $name = $_POST['name'];
    echo $to = 'janagiraman@netiapps.com';
     $subject = 'The subject';
     $body = 'The email body content';
