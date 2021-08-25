@@ -656,3 +656,14 @@ function wpb_custom_new_menu() {
 	// acf_add_options_sub_page('Footer');
   
   }
+
+// add_filter( 'register_post_type_args', 'my_articles_stories_args', 10, 2 );
+ 
+// function my_articles_stories_args( $args, $post_type ) {
+ 
+//     if ( 'articles-stories' === $post_type ) {
+//         $args['title'] = true;
+//     }
+ 
+//     return $args;
+// }

@@ -181,6 +181,15 @@ function get_menu( $data ){
 //    return wp_get_nav_menu_items('menu');
 }
 
+function contact_us(){
+    $to = 'janagiraman@netiapps.com';
+    $subject = 'The subject';
+    $body = 'The email body content';
+    $headers = array('Content-Type: text/html; charset=UTF-8');
+    
+    wp_mail( $to, $subject, $body, $headers );
+}
+
 
 add_action('rest_api_init', function() {
 	register_rest_route('wl/v1', 'posts', [
@@ -198,10 +207,17 @@ add_action('rest_api_init', function() {
 		'callback' => 'wl_page',
 	]);
 
-     register_rest_route( 'wl/v1', '/menus/(?P<slug>[a-zA-Z0-9-]+)', 
+    register_rest_route( 'wl/v1', '/menus/(?P<slug>[a-zA-Z0-9-]+)', 
     array(
       'methods'  => 'GET',
       'callback' => 'get_menu'
+    )
+  );
+
+  register_rest_route( 'wl/v1', '/contact-us', 
+    array(
+      'methods'  => 'POST',
+      'callback' => 'contact_us'
     )
   );
 });
