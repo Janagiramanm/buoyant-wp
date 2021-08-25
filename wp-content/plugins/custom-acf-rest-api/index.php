@@ -211,9 +211,9 @@ function get_article($data){
 //    print_r($description);
     if ( $page->have_posts() ) :
          while ($page->have_posts()) : $page->the_post();
-                 //echo $post->ID;
-                 $pid = the_post_ID();
-                 $banner_img = get_field('banner_image', $pid);
+                 echo $post->ID;
+                /// $pid = the_post_ID();
+                 $banner_img = get_field('banner_image', $post->ID);
                  print_r($banner_img);
                  //echo the_post_ID();
         endwhile;
