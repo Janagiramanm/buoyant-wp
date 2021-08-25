@@ -205,6 +205,10 @@ function get_article($data){
    echo '<pre>';
    print_r($res);
 
+   $banner_img = get_field_object('banner_image', $res[0]['ID']);
+   $description = get_field_object('description', $res[0]['ID']);
+   print_r($banner_img);
+   print_r($description);
     // if ( $page->have_posts() ) :
     //     // while ($page->have_posts()) : $page->the_post();
     //     echo 'OCMOOSHOS';
