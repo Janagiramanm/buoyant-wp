@@ -184,12 +184,13 @@ function get_menu( $data ){
 function get_article($data){
     global $wp;
     global $post;
+    $title = str_replace('-', ' ', $data['slug']);
     $args   =   array(
                 'post_type'         =>  'articles-stories',
                 'post_status'       =>  'publish',
-                'title' => $data['slug'],
+                'title' => $title,
                 );
-   echo $data['slug']; 
+  
     $res_data = [];
     $page = new WP_Query( $args );
     echo "Last SQL-Query: {$page->request}";
