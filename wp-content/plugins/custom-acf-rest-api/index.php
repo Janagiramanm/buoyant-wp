@@ -211,8 +211,11 @@ function get_article($data){
 //    print_r($description);
     if ( $page->have_posts() ) :
          while ($page->have_posts()) : $page->the_post();
-                 echo $post->ID;
-                 echo the_post_ID();
+                 //echo $post->ID;
+                 $pid = the_post_ID();
+                 $banner_img = get_field('banner_image', $pid);
+                 print_r($banner_img);
+                 //echo the_post_ID();
         endwhile;
         // echo 'OCMOOSHOS';
         // $post_id = get_the_ID();
