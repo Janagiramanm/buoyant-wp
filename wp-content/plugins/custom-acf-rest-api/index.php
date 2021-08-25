@@ -196,8 +196,11 @@ function get_article($data){
     echo "Last SQL-Query: {$page->request}";
 
     if ( $page->have_posts() ) :
+        // while ($page->have_posts()) : $page->the_post();
+        echo 'OCMOOSHOS';
         if (have_rows('aritcles_stories')):
             while (have_rows('aritcles_stories')) : the_row();
+             echo 'jjjjjjjjjjjjj';
                 // $data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
                 
                         $image = get_sub_field('banner_image');
