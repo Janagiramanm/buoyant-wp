@@ -198,8 +198,8 @@ function get_article($data){
     if ( $page->have_posts() ) :
         // while ($page->have_posts()) : $page->the_post();
         echo 'OCMOOSHOS';
-        if (have_rows('aritcles_stories')):
-            while (have_rows('aritcles_stories')) : the_row();
+        if (have_rows('acf')):
+            while (have_rows('acf')) : the_row();
              echo 'jjjjjjjjjjjjj';
                 // $data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
                 
