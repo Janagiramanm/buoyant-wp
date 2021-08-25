@@ -192,6 +192,8 @@ function get_article($data){
    echo $data['slug']; 
     $res_data = [];
     $page = new WP_Query( $args );
+    echo "Last SQL-Query: {$page->request}";
+
     if ( $page->have_posts() ) :
         if (have_rows('aritcles_stories')):
             while (have_rows('aritcles_stories')) : the_row();
