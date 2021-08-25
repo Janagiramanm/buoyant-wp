@@ -198,6 +198,7 @@ function get_article($data){
          while ($page->have_posts()) : $page->the_post();
               if(have_rows('articles_stories')):
                     while(have_rows('articles_stories')): the_row();
+                       $res['banner_image'] = get_sub_field('banner_image');
                        $res['title'] =  get_sub_field('title'); 
                        $res['description'] =  get_sub_field('description');
                  endwhile;
