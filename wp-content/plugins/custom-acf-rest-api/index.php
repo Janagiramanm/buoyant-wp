@@ -185,40 +185,49 @@ function get_article($data){
     global $wp;
     global $post;
     $title = str_replace('-', ' ', $data['slug']);
-    $args   =   array(
-                'post_type'         =>  'articles-stories',
-                'post_status'       =>  'publish',
-                'title' => $title,
-                );
+    // $args   =   array(
+    //             'post_type'         =>  'articles-stories',
+    //             'post_status'       =>  'publish',
+    //             'title' => $title,
+    //             );
   
-    $res_data = [];
-    $page = new WP_Query( $args );
-    echo "Last SQL-Query: {$page->request}";
+    // $res_data = [];
+    // $page = new WP_Query( $args );
+    // echo "Last SQL-Query: {$page->request}";
 
+    $args = [
+		'title' => $title,
+		'post_type' => 'articles-stories'
+	];
 
-    if ( $page->have_posts() ) :
-        // while ($page->have_posts()) : $page->the_post();
-        echo 'OCMOOSHOS';
-        $post_id = get_the_ID();
-        echo '<pre>';
-        print_r($page->have_posts);
-        echo $post_id;
-        if (have_rows('acf')):
-            while (have_rows('acf')) : the_row();
-             echo 'jjjjjjjjjjjjj';
-                // $data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
+	$res = get_posts($args);
+
+   echo '<pre>';
+   print_r($res);
+
+    // if ( $page->have_posts() ) :
+    //     // while ($page->have_posts()) : $page->the_post();
+    //     echo 'OCMOOSHOS';
+    //     $post_id = get_the_ID();
+    //     echo '<pre>';
+    //     print_r($page->have_posts);
+    //     echo $post_id;
+    //     if (have_rows('acf')):
+    //         while (have_rows('acf')) : the_row();
+    //          echo 'jjjjjjjjjjjjj';
+    //             // $data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
                 
-                        $image = get_sub_field('banner_image');
-                        $res_data[] = [
-                            'title' => get_sub_field('title', $post->ID),
-                            'description' => get_sub_field('description', $post->ID),
-                            'image' => $image['url']                                           
-                        ];
+    //                     $image = get_sub_field('banner_image');
+    //                     $res_data[] = [
+    //                         'title' => get_sub_field('title', $post->ID),
+    //                         'description' => get_sub_field('description', $post->ID),
+    //                         'image' => $image['url']                                           
+    //                     ];
                     
-            endwhile;
-        endif;
-    endif;
-    return $res_data;
+    //         endwhile;
+    //     endif;
+    // endif;
+    return $res;
 }
 
 
