@@ -181,8 +181,8 @@ function get_menu( $data ){
 //    return wp_get_nav_menu_items('menu');
 }
 
-function contact_us(){
-    echo $name = $_POST['name'];
+function contact_us($input){
+    echo $name = $input['name'];
    echo $to = 'janagiraman@netiapps.com';
     $subject = 'The subject';
     $body = 'The email body content';
