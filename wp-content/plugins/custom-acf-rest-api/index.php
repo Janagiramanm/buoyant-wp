@@ -189,21 +189,23 @@ function get_article($data){
                 'post_status'       =>  'publish',
                 'title' => $data['slug'],
                 );
-    
+   echo $data['slug']; 
     $res_data = [];
     $page = new WP_Query( $args );
-    if (have_rows('aritcles_stories')):
-        while (have_rows('aritcles_stories')) : the_row();
-              // $data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
-              
-                    $image = get_sub_field('banner_image');
-                    $res_data[] = [
-                        'title' => get_sub_field('title', $post->ID),
-                        'description' => get_sub_field('description', $post->ID),
-                        'image' => $image['url']                                           
-                    ];
-                  
-        endwhile;
+    if ( $page->have_posts() ) :
+        if (have_rows('aritcles_stories')):
+            while (have_rows('aritcles_stories')) : the_row();
+                // $data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
+                
+                        $image = get_sub_field('banner_image');
+                        $res_data[] = [
+                            'title' => get_sub_field('title', $post->ID),
+                            'description' => get_sub_field('description', $post->ID),
+                            'image' => $image['url']                                           
+                        ];
+                    
+            endwhile;
+        endif;
     endif;
     return $res_data;
 }
