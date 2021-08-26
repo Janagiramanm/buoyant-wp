@@ -204,7 +204,13 @@ function get_article($data){
                        if(have_rows('related_articles')):
                            while(have_rows('related_articles')):the_row();
                                 $relatedArticle =get_sub_field('article_name');
-                                $res['related_articles'][] = get_field_object('articles_stories',$relatedArticle->ID);
+                                while(get_field_object('articles_stories',$relatedArticle->ID)):the_row();
+                                      $res['related_articles'][] = [ 
+                                           'banner_image' => get_sub_field('banner_image')
+                                        
+                                      ] ;
+                                endwhile;
+                                //$res['related_articles'][] = get_field_object('articles_stories',$relatedArticle->ID);
                            endwhile;
                        endif;
 
