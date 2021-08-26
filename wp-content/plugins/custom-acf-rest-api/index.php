@@ -205,7 +205,7 @@ function get_article($data){
                            while(have_rows('related_articles')):the_row();
                                 $relatedArticle =get_sub_field('article_name');
                                 $articleGroup = get_field('articles_stories',$relatedArticle->ID);
-                                $res['related_articles'] = [ 
+                                $res['related_articles'][] = [ 
                                     'id' => $relatedArticle->ID,
                                     'banner_image' => $articleGroup['banner_image']['url'],
                                     'article_title' => $articleGroup['title'],
