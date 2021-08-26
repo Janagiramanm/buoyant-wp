@@ -224,9 +224,10 @@ function get_information($data){
     $page = new WP_Query( $args );
   //  print_r($page);
     if($page->have_posts()):
-
-        echo '<pre>';
-        print_r($page->the_post());
+        while ( $page->have_posts() ) :
+            echo '<pre>';
+            print_r($page->the_post());
+        endwhile;
 
     endif;
     
