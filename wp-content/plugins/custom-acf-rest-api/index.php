@@ -205,6 +205,10 @@ function get_article($data){
                            while(have_rows('related_articles')):the_row();
                                 $relatedArticle =get_sub_field('article_name');
                                 $articleGroup = get_field('articles_stories',$relatedArticle->ID);
+                                $res['related_articles'][] = [ 
+                                    'banner_image' => $articleGroup->banner_image
+                                ];
+
                                 // while(have_rows($articleGroup->value)):the_row();
 
                                 // endwhile;
@@ -226,7 +230,7 @@ function get_article($data){
         endwhile;
       
     endif;
-    return $articleGroup;
+    return $res;
 }
 
 function get_information($data){
