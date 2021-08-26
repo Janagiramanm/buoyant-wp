@@ -207,13 +207,13 @@ function get_article($data){
                            while(have_rows('related_articles')):the_row();
                                 $relatedArticle =get_sub_field('article_name');
                                 
-                                $res['related_articles'][] = $relatedArticle;
-                                // $res['related_articles'][] = [
-                                //     'art_name' => $relatedArticle->post_title,
-                                //     'art_image' => 	get_field('banner_image', $relatedArticle->ID),
-                                //     'art_url' => $relatedArticle->name
+                             //   $res['related_articles'][] = $relatedArticle;
+                                $res['related_articles'][] = [
+                                    'art_name' => $relatedArticle->post_title,
+                                    'art_image' => 	 get_post_meta($relatedArticle->ID, 'banner_image', true),
+                                    'art_url' => $relatedArticle->name
 
-                                // ];
+                                ];
                             $i++;
                            endwhile;
 
