@@ -203,7 +203,7 @@ function get_article($data){
                        $res['description'] =  get_sub_field('description');
                        
                        if(have_rows('related_articles')):
-                           while(have_rows('related_articles')):
+                           while(have_rows('related_articles')):the_row();
                                 $res['related_articles'][] = get_sub_field('article_name');
                            endwhile;
 
