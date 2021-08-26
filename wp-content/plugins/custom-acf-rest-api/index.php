@@ -210,6 +210,38 @@ function get_article($data){
     return $res;
 }
 
+function get_information($data){
+    global $wp;
+    global $post;
+    $title = str_replace('-', ' ', $data['slug']);
+    $args   =   array(
+                'post_type'         =>  'information_pages',
+                'post_status'       =>  'publish',
+                'name' => $title,
+                );
+  
+    $res_data = [];
+    $page = new WP_Query( $args );
+    if($page->have_posts()):
+
+        echo '<pre>';
+        print_r($page->have_posts());
+
+    endif;
+    
+    // if ( $page->have_posts() ) :
+    //      while ($page->have_posts()) : $page->the_post();
+    //           if(have_rows('articles_stories')):
+    //                 while(have_rows('articles_stories')): the_row();
+    //                    $res['title'] =  get_sub_field('title'); 
+    //                    $res['description'] =  get_sub_field('description');
+    //              endwhile;
+    //           endif;
+    //     endwhile;
+      
+    // endif;
+    return $res;
+}
 
 function contact_us($input){
     echo $name = $input['name'];
@@ -253,6 +285,13 @@ add_action('rest_api_init', function() {
         'methods'  => 'GET',
         'callback' => 'get_article'
     )
+    );
+
+    register_rest_route( 'wl/v1', '/information/(?P<slug>[a-zA-Z0-9-]+)', 
+        array(
+            'methods'  => 'GET',
+            'callback' => 'get_information'
+        )
     );
 
   register_rest_route( 'wl/v1', '/contact-us', 
