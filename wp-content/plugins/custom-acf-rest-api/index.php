@@ -208,14 +208,18 @@ function get_article($data){
                                 $relatedArticle =get_sub_field('article_name');
 
                                 $articleGroup = get_field_object('articles_stories',$relatedArticle->ID);
-                                
-                             //   $res['related_articles'][] = $relatedArticle;
+                               
+                                while($articleGroup): the_row();
                                 $res['related_articles'][] = [
                                     'art_name' => $relatedArticle->post_title,
-                                    'art_image' => $articleGroup->banner_image->url,
+                                    'art_image' => get_sub_field('banner_image'),
                                     'art_url' => $relatedArticle->name
 
                                 ];
+                                 endwhile;
+                                
+                             //   $res['related_articles'][] = $relatedArticle;
+                               
                             $i++;
                            endwhile;
 
