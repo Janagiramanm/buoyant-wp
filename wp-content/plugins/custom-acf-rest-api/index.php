@@ -220,29 +220,19 @@ function get_information($data){
                 'name' => $title,
                 );
   
-    $res_data = [];
+    $res = [];
     $page = new WP_Query( $args );
-  //  print_r($page);
+  
     if($page->have_posts()):
         while ( $page->have_posts() ) :
-           echo "jdsadsahlfasfoas";
             $page->the_post();
+            $res['title'] =  the_title(); 
+            $res['description'] =  wp_reset_postdata();
         endwhile;
 
     endif;
     
-    // if ( $page->have_posts() ) :
-    //      while ($page->have_posts()) : $page->the_post();
-    //           if(have_rows('articles_stories')):
-    //                 while(have_rows('articles_stories')): the_row();
-    //                    $res['title'] =  get_sub_field('title'); 
-    //                    $res['description'] =  get_sub_field('description');
-    //              endwhile;
-    //           endif;
-    //     endwhile;
-      
-    // endif;
-    return $res_data;
+    return $res;
 }
 
 function contact_us($input){
