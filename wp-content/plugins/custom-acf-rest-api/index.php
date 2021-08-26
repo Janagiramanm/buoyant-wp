@@ -227,7 +227,7 @@ function get_information($data){
         while ( $page->have_posts() ) :
             $page->the_post();
             $res['title'] =  get_the_title(); 
-            $res['description'] = get_field('content');
+            $res['description'] = get_the_content();
         endwhile;
 
     endif;
