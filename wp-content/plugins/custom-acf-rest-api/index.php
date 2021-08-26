@@ -210,7 +210,7 @@ function get_article($data){
                              //   $res['related_articles'][] = $relatedArticle;
                                 $res['related_articles'][] = [
                                     'art_name' => $relatedArticle->post_title,
-                                    'art_image' => 	 get_field_object('banner_image',$relatedArticle->ID),
+                                    'art_image' => 	 get_field_object('articles_stories',$relatedArticle->ID),
                                     'art_url' => $relatedArticle->name
 
                                 ];
