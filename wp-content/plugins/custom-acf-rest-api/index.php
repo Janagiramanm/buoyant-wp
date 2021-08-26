@@ -222,7 +222,7 @@ function get_information($data){
   
     $res_data = [];
     $page = new WP_Query( $args );
-    print_r($page);
+  //  print_r($page);
     if($page->have_posts()):
 
         echo '<pre>';
