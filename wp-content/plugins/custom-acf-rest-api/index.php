@@ -177,8 +177,7 @@ function wl_page( $slug ){
 function get_menu( $data ){
      // Replace your menu name, slug or ID carefully
      return wp_get_nav_menu_items( $data[ 'slug' ] );
-   //  return get_registered_nav_menus();
-//    return wp_get_nav_menu_items('menu');
+   
 }
 
 function get_article($data){
@@ -203,26 +202,11 @@ function get_article($data){
                        $res['description'] =  get_sub_field('description');
                        
                        if(have_rows('related_articles')):
-                           $i =1;
                            while(have_rows('related_articles')):the_row();
                                 $relatedArticle =get_sub_field('article_name');
                                 $res['related_articles'][] = get_field_object('articles_stories',$relatedArticle->ID);
-                                // while($articleGroup): the_row(); 
-                                // $res['related_articles'][] = [
-                                //     'art_name' => $relatedArticle->post_title,
-                                //     'art_image' => get_sub_field('banner_image'),
-                                //     'art_url' => $relatedArticle->name
-
-                                // ];
-                                //  endwhile;
-                                
-                             //   $res['related_articles'][] = $relatedArticle;
-                               
-                            $i++;
                            endwhile;
-
                        endif;
-
 
                  endwhile;
               endif;
