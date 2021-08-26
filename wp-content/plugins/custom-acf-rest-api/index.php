@@ -206,11 +206,13 @@ function get_article($data){
                            $i =1;
                            while(have_rows('related_articles')):the_row();
                                 $relatedArticle =get_sub_field('article_name');
+
+                                $articleGroup = get_field_object('articles_stories',$relatedArticle->ID);
                                 
                              //   $res['related_articles'][] = $relatedArticle;
                                 $res['related_articles'][] = [
                                     'art_name' => $relatedArticle->post_title,
-                                    'art_image' => 	 get_field_object('articles_stories',$relatedArticle->ID),
+                                    'art_image' => $articleGroup->banner_image->url,
                                     'art_url' => $relatedArticle->name
 
                                 ];
