@@ -204,7 +204,10 @@ function get_article($data){
                        if(have_rows('related_articles')):
                            while(have_rows('related_articles')):the_row();
                                 $relatedArticle =get_sub_field('article_name');
-                                $articleGroup = get_field_object('articles_stories',$relatedArticle->ID);
+                                $articleGroup = get_field('articles_stories',$relatedArticle->ID);
+                                // while(have_rows($articleGroup->value)):the_row();
+
+                                // endwhile;
                                 // echo "<pre>";
                                 // print_r($articleGroup->title);
                                 // while():the_row();
