@@ -226,7 +226,7 @@ function get_information($data){
     if($page->have_posts()):
 
         echo '<pre>';
-        print_r($page->have_posts());
+        print_r($page->the_post());
 
     endif;
     
