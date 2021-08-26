@@ -209,7 +209,7 @@ function get_article($data){
 
                                 $articleGroup = get_field_object('articles_stories',$relatedArticle->ID);
                                
-                                while($articleGroup): the_row();
+                                while($articleGroup): the_row(); 
                                 $res['related_articles'][] = [
                                     'art_name' => $relatedArticle->post_title,
                                     'art_image' => get_sub_field('banner_image'),
