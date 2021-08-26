@@ -225,8 +225,8 @@ function get_information($data){
   //  print_r($page);
     if($page->have_posts()):
         while ( $page->have_posts() ) :
-            echo '<pre>';
-            print_r($page->the_post());
+           echo "jdsadsahlfasfoas";
+            $page->the_post();
         endwhile;
 
     endif;
