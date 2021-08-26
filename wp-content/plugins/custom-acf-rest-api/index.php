@@ -206,6 +206,7 @@ function get_article($data){
                            $i =1;
                            while(have_rows('related_articles')):the_row();
                                 $relatedArticle =get_sub_field('article_name');
+                                echo 'RR=='. $relatedArticle->ID;
                                 $res['related_articles'][] = [
                                     'art_name' => $relatedArticle->post_title,
                                     'art_image' => get_field( 'banner_image', $relatedArticle->ID )
