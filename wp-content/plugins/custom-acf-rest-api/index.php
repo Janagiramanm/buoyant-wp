@@ -228,8 +228,8 @@ function get_information($data){
             $page->the_post();
             $res['title'] =  get_the_title(); 
             $res['description'] = get_the_content();
+            $res['feature_image'] =get_the_post_thumbnail_url();
         endwhile;
-
     endif;
     
     return $res;
