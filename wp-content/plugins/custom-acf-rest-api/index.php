@@ -226,8 +226,8 @@ function get_information($data){
     if($page->have_posts()):
         while ( $page->have_posts() ) :
             $page->the_post();
-            $res['title'] =  the_title(); 
-            $res['description'] =  wp_reset_postdata();
+            $res['title'] =  get_the_title($post->ID); 
+            $res['description'] =  the_content();
         endwhile;
 
     endif;
