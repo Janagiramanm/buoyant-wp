@@ -203,8 +203,15 @@ function get_article($data){
                        $res['description'] =  get_sub_field('description');
                        
                        if(have_rows('related_articles')):
+                           $i =1;
                            while(have_rows('related_articles')):the_row();
-                                $res['related_articles'][] = get_sub_field('article_name');
+                                $relatedArticle =get_sub_field('article_name');
+                                $res['related_articles'][] = [
+                                    'art_name' => $relatedArticle->post_title,
+                                    'art_image' => get_field( 'banner_image', $relatedArticle->ID )
+
+                                ];
+                            $i++;
                            endwhile;
 
                        endif;
