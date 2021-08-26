@@ -240,7 +240,7 @@ function get_information($data){
     //     endwhile;
       
     // endif;
-    return $res;
+    return $res_data;
 }
 
 function contact_us($input){
