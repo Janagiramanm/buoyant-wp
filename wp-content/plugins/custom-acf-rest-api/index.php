@@ -206,7 +206,11 @@ function get_article($data){
                                 $relatedArticle =get_sub_field('article_name');
                                 $articleGroup = get_field('articles_stories',$relatedArticle->ID);
                                 $res['related_articles'][] = [ 
-                                    'banner_image' => $articleGroup['banner_image']
+                                    'banner_image' => $articleGroup['banner_image']['url'],
+                                    'article_title' => $articleGroup['title'],
+                                    'article_url' => strtolower(str_replace(' ','-',$articleGroup['title'])),
+                                    'description' => substr(strip_tags($articleGroup['description']),0,90)
+
                                 ];
 
                                 // while(have_rows($articleGroup->value)):the_row();
