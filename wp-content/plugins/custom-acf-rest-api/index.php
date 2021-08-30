@@ -200,6 +200,7 @@ function get_article($data){
                        $res['banner_image'] = get_sub_field('banner_image');
                        $res['title'] =  get_sub_field('title'); 
                        $res['description'] =  get_sub_field('description');
+                       $res['content_section'] = get_sub_field('content_section');
                        
                        if(have_rows('related_articles')):
                            while(have_rows('related_articles')):the_row();
