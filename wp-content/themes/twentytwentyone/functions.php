@@ -667,3 +667,8 @@ function wpb_custom_new_menu() {
  
 //     return $args;
 // }
+
+function add_cors_http_header(){
+    header("Access-Control-Allow-Origin: *");
+}
+add_action('init','add_cors_http_header');
