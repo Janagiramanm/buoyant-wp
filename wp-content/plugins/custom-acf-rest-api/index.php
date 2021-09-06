@@ -10,6 +10,9 @@
 
 //require WPMU_PLUGIN_DIR."/custom-post-types/.php";
 
+
+header("Access-Control-Allow-Origin: *");
+
 function wl_posts() {
 	$args = [
 		'numberposts' => 99999,
