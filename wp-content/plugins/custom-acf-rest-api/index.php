@@ -269,13 +269,14 @@ function get_information($data){
 
 function contact_us($input){
   
-    $name = $input['name'];
-    $email = $input['email'];
+    $name = $input->name;
+    $email = $input->email;
     $mobile = $input['mobile'];
     $booking_id = $input['booking_id'];
     echo $to = 'janagiraman@netiapps.com';
    echo '<br>'. $subject = $name. ' sent an enquiry';
-    $body = $input['message'];
+    // $body = $input['message'];
+    $body = "this is test mail for next js";
     $headers = array('Content-Type: text/html; charset=UTF-8');
     
     if(wp_mail( $to, $subject, $body, $headers )){ 
