@@ -267,10 +267,14 @@ function get_information($data){
     return $res;
 }
 
-function contact_us($input){
+function contact_us(){
   
-    $name = $_POST['name'];
-    $email = $_POST['email'];
+    $request_body = file_get_contents('php://input');
+    $input = json_decode($request_body);
+
+
+    $name = $input['name'];
+    $email = $input['email'];
     $mobile = $input['mobile'];
     $booking_id = $input['booking_id'];
     echo $to = 'janagiraman@netiapps.com';
