@@ -268,6 +268,9 @@ function get_information($data){
 }
 
 function contact_us($input){
+    echo '<pre>';
+    print_r($input);
+    exit;
     $name = $input['name'];
     $email = $input['email'];
     $mobile = $input['mobile'];
@@ -278,7 +281,8 @@ function contact_us($input){
     $headers = array('Content-Type: text/html; charset=UTF-8');
     
     if(wp_mail( $to, $subject, $body, $headers )){
-        return ['message' => 'Mail sent successfully! '];
+
+        return ['status' => 1, 'message' => 'Mail sent successfully! '];
     }
 }
 
