@@ -267,7 +267,7 @@ function get_information($data){
     return $res;
 }
 
-function contact_us(){
+function contact_us($input){
   
     $request_body = file_get_contents('php://input');
     $input = json_decode($request_body);
