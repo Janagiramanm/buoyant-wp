@@ -269,8 +269,8 @@ function get_information($data){
 
 function contact_us($input){
   
-    $request_body = file_get_contents('php://input');
-    $input = json_decode($request_body);
+    // $request_body = file_get_contents('php://input');
+    // $input = json_decode($request_body);
 
 
     $name = $input['name'];
