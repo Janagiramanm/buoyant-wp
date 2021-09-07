@@ -280,7 +280,7 @@ function contact_us($input){
     $body = $input['message'];
     $headers = array('Content-Type: text/html; charset=UTF-8');
     
-    if(wp_mail( $to, $subject, $body, $headers )){
+    if(wp_mail( $to, $subject, $body, $headers )){ 
 
         return ['status' => 1, 'message' => 'Mail sent successfully! '];
     }
