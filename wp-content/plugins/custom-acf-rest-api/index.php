@@ -273,12 +273,12 @@ function contact_us($input){
     $mobile = $input['mobile'];
     $booking_id = $input['booking_id'];
     $to = 'janagiraman@netiapps.com';
-    $subject = 'The subject';
-    $body = 'The email body content this is fore dslkhflhdsafldshfoho lsdjofdsho';
+    $subject = $name. ' sent an enquiry';
+    $body = $input['message'];
     $headers = array('Content-Type: text/html; charset=UTF-8');
     
     if(wp_mail( $to, $subject, $body, $headers )){
-        return ['status' => 1, 'message' => 'Mail sent successfully! '];
+        return ['message' => 'Mail sent successfully! '];
     }
 }
 
