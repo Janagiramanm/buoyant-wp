@@ -274,7 +274,7 @@ function contact_us($input){
     $booking_id = $input['booking_id'];
    echo $to = 'janagiraman@netiapps.com';
     $subject = 'The subject';
-    $body = 'The email body content';
+    $body = 'The email body content this is fore dslkhflhdsafldshfoho lsdjofdsho';
     $headers = array('Content-Type: text/html; charset=UTF-8');
     
     wp_mail( $to, $subject, $body, $headers );
