@@ -268,9 +268,9 @@ function get_information($data){
 }
 
 function contact_us($input){
-    echo '<pre>';
-    print_r($input);
-    exit;
+    // echo '<pre>';
+    // print_r($input);
+    // exit;
     $name = $input['name'];
     $email = $input['email'];
     $mobile = $input['mobile'];
