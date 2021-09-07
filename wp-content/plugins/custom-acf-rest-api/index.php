@@ -274,7 +274,7 @@ function contact_us($input){
     $mobile = $input['mobile'];
     $booking_id = $input['booking_id'];
     echo $to = 'janagiraman@netiapps.com';
-    $subject = $name. ' sent an enquiry';
+   echo '<br>'. $subject = $name. ' sent an enquiry';
     $body = $input['message'];
     $headers = array('Content-Type: text/html; charset=UTF-8');
     
