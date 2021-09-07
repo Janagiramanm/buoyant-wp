@@ -269,8 +269,8 @@ function get_information($data){
 
 function contact_us($input){
   
-    $name = $input->name;
-    $email = $input->email;
+    $name = $_POST['name'];
+    $email = $_POST['email'];
     $mobile = $input['mobile'];
     $booking_id = $input['booking_id'];
     echo $to = 'janagiraman@netiapps.com';
