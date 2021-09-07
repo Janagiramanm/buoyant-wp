@@ -268,14 +268,12 @@ function get_information($data){
 }
 
 function contact_us($input){
-    // echo '<pre>';
-    // print_r($input);
-    // exit;
+  
     $name = $input['name'];
     $email = $input['email'];
     $mobile = $input['mobile'];
     $booking_id = $input['booking_id'];
-    $to = 'janagiraman@netiapps.com';
+    echo $to = 'janagiraman@netiapps.com';
     $subject = $name. ' sent an enquiry';
     $body = $input['message'];
     $headers = array('Content-Type: text/html; charset=UTF-8');
