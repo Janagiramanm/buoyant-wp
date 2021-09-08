@@ -281,9 +281,11 @@ function get_article_stories($data){
     if($page->have_posts()):
         while ( $page->have_posts() ) :
             $page->the_post();
+            $id = get_the_ID();
+            $date = get_the_date( 'Y-m-d H:i:s', get_the_ID() );
             $res[] = ['title' =>  get_the_title() , 
-                        'description' => get_the_content(),
-                        'feature_image' => get_the_post_thumbnail_url()];
+                        'date' => $date,
+                        'feature_image' => wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID()) )];
         endwhile;
     endif;
     
