@@ -285,8 +285,8 @@ function get_article_stories($data){
             $date = get_the_date( 'Y-m-d H:i:s', get_the_ID() );
             $res[] = ['title' =>  get_the_title() , 
                         'date' => $date,
-                        // 'feature_image' => wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID()) )];
-                        'feature_image' => the_post_thumbnail('large')];
+                        // 'feature_image' => wp_get_attachment_image_src( get_post_thumbnail_id( ()) )];
+                        'feature_image' => get_post_thumbnail_id(get_the_ID(),'large')];
         endwhile;
     endif;
     
