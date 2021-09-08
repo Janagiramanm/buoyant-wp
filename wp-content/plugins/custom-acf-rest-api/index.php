@@ -273,11 +273,11 @@ function contact_us($input){
     // $input = json_decode($request_body);
 
 
-    $name = $input['name'];
+    echo $name = $_POST['name'];
     $email = $input['email'];
     $mobile = $input['mobile'];
     $booking_id = $input['booking_id'];
-    echo $to = 'janagiraman@netiapps.com';
+    $to = 'janagiraman@netiapps.com';
    echo '<br>'. $subject = $name. ' sent an enquiry';
     // $body = $input['message'];
     $body = "this is test mail for next js";
