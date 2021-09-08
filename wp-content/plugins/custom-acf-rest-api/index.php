@@ -299,7 +299,7 @@ function contact_us($request){
     // $input = json_decode($request_body);
 
 
-    echo $name = $request->input('name');
+    $name = $input['name'];
     $email = $input['email'];
     $mobile = $input['mobile'];
     $booking_id = $input['booking_id'];
