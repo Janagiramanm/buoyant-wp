@@ -286,7 +286,7 @@ function get_article_stories($data){
             $res[] = ['title' =>  get_the_title() , 
                         'date' => $date,
                         // 'feature_image' => wp_get_attachment_image_src( get_post_thumbnail_id( ()) )];
-                        'feature_image' => get_post_thumbnail_id(get_the_ID(),'large')];
+                        'feature_image' => get_the_post_thumbnail_url(get_the_ID(),'full')];
         endwhile;
     endif;
     
