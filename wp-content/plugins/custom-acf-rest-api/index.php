@@ -281,9 +281,9 @@ function get_article_stories($data){
     if($page->have_posts()):
         while ( $page->have_posts() ) :
             $page->the_post();
-            $res['title'] =  get_the_title(); 
-            $res['description'] = get_the_content();
-            $res['feature_image'] =get_the_post_thumbnail_url();
+            $res[] = ['title' =>  get_the_title() , 
+                        'description' => get_the_content(),
+                        'feature_image' => get_the_post_thumbnail_url()];
         endwhile;
     endif;
     
