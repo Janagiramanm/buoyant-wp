@@ -267,13 +267,13 @@ function get_information($data){
     return $res;
 }
 
-function contact_us($input){
+function contact_us($request){
   
     // $request_body = file_get_contents('php://input');
     // $input = json_decode($request_body);
 
 
-    echo $name = $_POST['name'];
+    echo $name = $request->input('name');
     $email = $input['email'];
     $mobile = $input['mobile'];
     $booking_id = $input['booking_id'];
