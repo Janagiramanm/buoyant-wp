@@ -267,6 +267,29 @@ function get_information($data){
     return $res;
 }
 
+function get_article_stories($data){
+    global $wp;
+    global $post;
+    $args   =   array(
+                'post_type'         =>  'articles-stories',
+                'post_status'       =>  'publish',
+                );
+  
+    $res = [];
+    $page = new WP_Query( $args );
+  
+    if($page->have_posts()):
+        while ( $page->have_posts() ) :
+            $page->the_post();
+            $res['title'] =  get_the_title(); 
+            $res['description'] = get_the_content();
+            $res['feature_image'] =get_the_post_thumbnail_url();
+        endwhile;
+    endif;
+    
+    return $res;
+}
+
 function contact_us($request){
   
     // $request_body = file_get_contents('php://input');
@@ -333,6 +356,12 @@ add_action('rest_api_init', function() {
       'callback' => 'contact_us'
     )
   );
+  register_rest_route( 'wl/v1', '/articles', 
+    array(
+        'methods'  => 'GET',
+        'callback' => 'get_article_stories'
+    )
+    );
 });
 
 // function add_custom_headers() {
