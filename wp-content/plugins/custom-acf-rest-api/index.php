@@ -295,27 +295,15 @@ function get_article_stories($data){
 
 function send_contact_us(WP_REST_Request $request){
   
-    
-  
-   // print_r($request);
-
     $parameters = json_decode($request->get_body());
-  print_r($parameters);
-
-//    print_r($parameters['name']);
-   echo 'FIRSt'.$request->get_body_params('name');
-   echo 'second'.$parameters->name;
-   exit;
-
-
-    $name = $parameters['name'];
-    $email = $parameters['email'];
-    $mobile = $parameters['mobile'];
-    $booking_id = $parameters['booking_id'];
+    $name = $parameters->name;
+    $email = $parameters->email;
+    $mobile = $parameters->mobile;
+    $booking_id = $parameters->booking_id;
     $to = 'janagiraman@netiapps.com';
-   echo '<br>'. $subject = $name. ' sent an enquiry';
-    // $body = $input['message'];
-    $body = "this is test mail for next js";
+    $subject = $name. ' sent an enquiry';
+    $body = $parameters->message;
+    //$body = "this is test mail for next js";
     $headers = array('Content-Type: text/html; charset=UTF-8');
     
     if(wp_mail( $to, $subject, $body, $headers )){ 
