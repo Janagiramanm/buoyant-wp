@@ -293,12 +293,12 @@ function get_article_stories($data){
     return $res;
 }
 
-function send_contact_us($request){
+function send_contact_us(WP_REST_Request $request){
   
     // $request_body = file_get_contents('php://input');
     // $input = json_decode($request_body);
     echo '<pre>';
-   print_r($request->get_json_params());
+    print_r($request->get_body_params());
    // print_r($request);
 
 //    $parameters = WP_REST_Request::parse_body_params();
