@@ -303,7 +303,7 @@ function send_contact_us(WP_REST_Request $request){
   print_r($parameters);
 
 //    print_r($parameters['name']);
-   echo 'FIRSt'.$request->get_param('name');
+   echo 'FIRSt'.$request->get_body_params('name');
    echo 'second'.$parameters->name;
    exit;
 
