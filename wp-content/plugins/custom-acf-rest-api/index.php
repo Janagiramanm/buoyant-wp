@@ -300,7 +300,8 @@ function send_contact_us($request){
     echo '<pre>';
    // print_r($request);
 
-    $parameters = $request::get_body();
+    $parameters = WP_REST_Request::parse_body_params();
+
 
    print_r($parameters);
    exit;
