@@ -299,7 +299,7 @@ function send_contact_us(WP_REST_Request $request){
   
    // print_r($request);
 
-    $parameters = $request->get_body();
+    $parameters = json_decode($request->get_body());
   print_r($parameters);
 
 //    print_r($parameters['name']);
