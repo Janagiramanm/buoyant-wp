@@ -298,11 +298,13 @@ function send_contact_us($request){
     // $request_body = file_get_contents('php://input');
     // $input = json_decode($request_body);
 
+    $parameters = $request->get_params();
 
-    $name = $request['name'];
-    $email = $request['email'];
-    $mobile = $request['mobile'];
-    $booking_id = $request['booking_id'];
+
+    $name = $parameters['name'];
+    $email = $parameters['email'];
+    $mobile = $parameters['mobile'];
+    $booking_id = $parameters['booking_id'];
     $to = 'janagiraman@netiapps.com';
    echo '<br>'. $subject = $name. ' sent an enquiry';
     // $body = $input['message'];
