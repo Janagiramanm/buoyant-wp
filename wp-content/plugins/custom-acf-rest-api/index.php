@@ -293,16 +293,16 @@ function get_article_stories($data){
     return $res;
 }
 
-function contact_us($request){
+function send_contact_us($request){
   
     // $request_body = file_get_contents('php://input');
     // $input = json_decode($request_body);
 
 
-    $name = $input['name'];
-    $email = $input['email'];
-    $mobile = $input['mobile'];
-    $booking_id = $input['booking_id'];
+    $name = $request['name'];
+    $email = $request['email'];
+    $mobile = $request['mobile'];
+    $booking_id = $request['booking_id'];
     $to = 'janagiraman@netiapps.com';
    echo '<br>'. $subject = $name. ' sent an enquiry';
     // $body = $input['message'];
@@ -356,7 +356,7 @@ add_action('rest_api_init', function() {
   register_rest_route( 'wl/v1', '/contact-us', 
     array(
       'methods'  => 'POST',
-      'callback' => 'contact_us'
+      'callback' => 'send_contact_us'
     )
   );
   register_rest_route( 'wl/v1', '/articles', 
