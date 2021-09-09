@@ -296,14 +296,15 @@ function get_article_stories($data){
 function send_contact_us(WP_REST_Request $request){
   
     
-    echo '<pre>';
-    print_r($request->get_body());
+  
    // print_r($request);
 
     $parameters = $request->get_body();
+  print_r($parameters);
 
-
-   print_r($parameters['name']);
+//    print_r($parameters['name']);
+   echo 'FIRSt'.$parameters['name'];
+   echo 'second'.$parameters->name;
    exit;
 
 
