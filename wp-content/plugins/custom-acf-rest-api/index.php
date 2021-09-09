@@ -297,8 +297,12 @@ function send_contact_us($request){
   
     // $request_body = file_get_contents('php://input');
     // $input = json_decode($request_body);
+    echo '<pre>';
+    print_r($request);
 
     $parameters = $request->get_params();
+   print_r($parameters);
+   exit;
 
 
     $name = $parameters['name'];
