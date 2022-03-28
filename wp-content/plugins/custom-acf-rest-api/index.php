@@ -192,6 +192,8 @@ function get_article($data){
                 'post_status'       =>  'publish',
                 'name' => $title,
                 );
+    echo '<pre>';
+    print_r($args);
   
     $res_data = [];
     $page = new WP_Query( $args );
@@ -204,7 +206,7 @@ function get_article($data){
                        $res['title'] =  get_sub_field('title'); 
                        $res['description'] =  get_sub_field('description');
                        $res['content_section'] = get_sub_field('content_section');
-                       
+                       $res['post_name'] = $page->the_post()->post_name;
                        if(have_rows('related_articles')):
                            while(have_rows('related_articles')):the_row();
                                 $relatedArticle =get_sub_field('article_name');
