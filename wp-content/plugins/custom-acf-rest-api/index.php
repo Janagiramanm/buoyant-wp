@@ -118,24 +118,24 @@ function wl_page( $slug ){
                     endif;
                 endif;
 
-                // if($slug['section'] == 'articles-stories'):
-                //     if (have_rows('aritcles_and_stories')):
-                //             while (have_rows('aritcles_and_stories')) : the_row();
-                //                    $data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
-                //                    if(have_rows('article_list')):
-                //                       while(have_rows('article_list')): the_row();
-                //                         $image = get_sub_field('image');
-                //                         $data[] = [
-                //                             'title' => get_sub_field('title', $post->ID),
-                //                             'description' => get_sub_field('description', $post->ID),
-                //                             'image' => $image['url']                                           
-                //                         ];
+                if($slug['section'] == 'articles-stories'):
+                    if (have_rows('aritcles_and_stories')):
+                            while (have_rows('aritcles_and_stories')) : the_row();
+                                   $data[] =[ 'section_title' => get_sub_field('section_title', $post->ID) ];
+                                   if(have_rows('article_list')):
+                                      while(have_rows('article_list')): the_row();
+                                        $image = get_sub_field('image');
+                                        $data[] = [
+                                            'title' => get_sub_field('title', $post->ID),
+                                            'description' => get_sub_field('description', $post->ID),
+                                            'image' => $image['url']                                           
+                                        ];
                                       
-                //                        endwhile;
-                //                     endif;
-                //             endwhile;
-                //     endif;
-                // endif;
+                                       endwhile;
+                                    endif;
+                            endwhile;
+                    endif;
+                endif;
 
                 if($slug['section'] == 'client-experience'):
                     if (have_rows('client_experience')):
@@ -204,7 +204,6 @@ function get_article($data){
                        $res['title'] =  get_sub_field('title'); 
                        $res['description'] =  get_sub_field('description');
                        $res['content_section'] = get_sub_field('content_section');
-                       $res['post_name'] = $page->the_post()->post_name;
                        if(have_rows('related_articles')):
                            while(have_rows('related_articles')):the_row();
                                 $relatedArticle =get_sub_field('article_name');
