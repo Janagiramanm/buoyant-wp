@@ -183,67 +183,67 @@ function get_menu( $data ){
    
 }
 
-function get_article($data){
-    global $wp;
-    global $post;
-    $title = str_replace('-', ' ', $data['slug']);
-    $args   =   array(
-                'post_type'         =>  'articles-stories',
-                'post_status'       =>  'publish',
-                'name' => $title,
-                );
-    echo '<pre>';
-    print_r($args);
-    exit;
+// function get_article($data){
+//     global $wp;
+//     global $post;
+//     $title = str_replace('-', ' ', $data['slug']);
+//     $args   =   array(
+//                 'post_type'         =>  'articles-stories',
+//                 'post_status'       =>  'publish',
+//                 'name' => $title,
+//                 );
+//     echo '<pre>';
+//     print_r($args);
+//     exit;
   
-    $res_data = [];
-    $page = new WP_Query( $args );
+//     $res_data = [];
+//     $page = new WP_Query( $args );
     
-    if ( $page->have_posts() ) :
-         while ($page->have_posts()) : $page->the_post();
-              if(have_rows('articles_stories')):
-                    while(have_rows('articles_stories')): the_row();
-                       $res['banner_image'] = get_sub_field('banner_image');
-                       $res['title'] =  get_sub_field('title'); 
-                       $res['description'] =  get_sub_field('description');
-                       $res['content_section'] = get_sub_field('content_section');
-                       $res['post_name'] = $page->the_post()->post_name;
-                       if(have_rows('related_articles')):
-                           while(have_rows('related_articles')):the_row();
-                                $relatedArticle =get_sub_field('article_name');
-                                $articleGroup = get_field('articles_stories',$relatedArticle->ID);
-                                $res['related_articles'][] = [ 
-                                    'id' => $relatedArticle->ID,
-                                    'banner_image' => $articleGroup['banner_image']['url'],
-                                    'article_title' => $articleGroup['title'],
-                                    'article_url' => strtolower(str_replace(' ','-',$articleGroup['title'])),
-                                    'description' => substr(strip_tags($articleGroup['description']),0,90)
+//     if ( $page->have_posts() ) :
+//          while ($page->have_posts()) : $page->the_post();
+//               if(have_rows('articles_stories')):
+//                     while(have_rows('articles_stories')): the_row();
+//                        $res['banner_image'] = get_sub_field('banner_image');
+//                        $res['title'] =  get_sub_field('title'); 
+//                        $res['description'] =  get_sub_field('description');
+//                        $res['content_section'] = get_sub_field('content_section');
+//                        $res['post_name'] = $page->the_post()->post_name;
+//                        if(have_rows('related_articles')):
+//                            while(have_rows('related_articles')):the_row();
+//                                 $relatedArticle =get_sub_field('article_name');
+//                                 $articleGroup = get_field('articles_stories',$relatedArticle->ID);
+//                                 $res['related_articles'][] = [ 
+//                                     'id' => $relatedArticle->ID,
+//                                     'banner_image' => $articleGroup['banner_image']['url'],
+//                                     'article_title' => $articleGroup['title'],
+//                                     'article_url' => strtolower(str_replace(' ','-',$articleGroup['title'])),
+//                                     'description' => substr(strip_tags($articleGroup['description']),0,90)
 
-                                ];
+//                                 ];
 
-                                // while(have_rows($articleGroup->value)):the_row();
+//                                 // while(have_rows($articleGroup->value)):the_row();
 
-                                // endwhile;
-                                // echo "<pre>";
-                                // print_r($articleGroup->title);
-                                // while():the_row();
-                                //       $res['related_articles'][] = [ 
-                                //            'banner_image' => get_sub_field('banner_image')
+//                                 // endwhile;
+//                                 // echo "<pre>";
+//                                 // print_r($articleGroup->title);
+//                                 // while():the_row();
+//                                 //       $res['related_articles'][] = [ 
+//                                 //            'banner_image' => get_sub_field('banner_image')
                                         
-                                //       ] ;
-                                // endwhile;
-                                //$res['related_articles'][] = get_field_object('articles_stories',$relatedArticle->ID);
-                           endwhile;
-                       endif;
+//                                 //       ] ;
+//                                 // endwhile;
+//                                 //$res['related_articles'][] = get_field_object('articles_stories',$relatedArticle->ID);
+//                            endwhile;
+//                        endif;
 
-                 endwhile;
-              endif;
+//                  endwhile;
+//               endif;
                
-        endwhile;
+//         endwhile;
       
-    endif;
-    return $res;
-}
+//     endif;
+//     return $res;
+// }
 
 function get_information($data){
     global $wp;
