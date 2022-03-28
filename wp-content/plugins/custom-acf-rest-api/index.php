@@ -130,6 +130,9 @@ function wl_page( $slug ){
                                             'description' => get_sub_field('description', $post->ID),
                                             'image' => $image['url']                                           
                                         ];
+                                        echo '<pre>';
+                                        print_r($data);
+                                        exit;
                                        endwhile;
                                     endif;
                             endwhile;
