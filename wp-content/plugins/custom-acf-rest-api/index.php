@@ -194,6 +194,7 @@ function get_article($data){
                 );
     echo '<pre>';
     print_r($args);
+    exit;
   
     $res_data = [];
     $page = new WP_Query( $args );
