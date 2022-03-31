@@ -296,7 +296,7 @@ function get_article_stories($data){
 function get_article_slug($data){
     global $wp;
     global $post;
-    $id = str_replace('-', ' ', $data['id']);
+    $id = str_replace('-', ' ', $data['slug']);
     $args   =   array(
                 'post_type'         =>  'articles-stories',
                 'post_status'       =>  'publish',
@@ -311,7 +311,9 @@ function get_article_slug($data){
             $page->the_post();
             $id = get_the_ID();
             $date = get_the_date( 'Y-m-d H:i:s', get_the_ID() );
+            $slug = get_post_field( 'post_name', get_the_ID() );
             $res[] = ['title' =>  get_the_title() , 
+                       'post_name' => $slug,
                         'date' => $date,
                         // 'feature_image' => wp_get_attachment_image_src( get_post_thumbnail_id( ()) )];
                         'feature_image' => get_the_post_thumbnail_url(get_the_ID(),'full')];
@@ -391,7 +393,7 @@ add_action('rest_api_init', function() {
     )
     );
 
- register_rest_route( 'wl/v1', '/article-slug/(?P<id>[0-9-]+)', 
+ register_rest_route( 'wl/v1', '/article-slug/(?P<slug>[0-9-]+)', 
     array(
         'methods'  => 'GET',
         'callback' => 'get_article_slug'
