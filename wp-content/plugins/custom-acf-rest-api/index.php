@@ -241,6 +241,63 @@ function get_article($data){
     return $res;
 }
 
+function get_articles_stories($data){
+    global $wp;
+    global $post;
+    //$title = str_replace('-', ' ', $data['slug']);
+    $args   =   array(
+                'post_type'         =>  'articles-stories',
+                'post_status'       =>  'publish',
+                //'name' => $title,
+                );
+    $res_data = [];
+    $page = new WP_Query( $args ); 
+    
+    if ( $page->have_posts() ) :
+         while ($page->have_posts()) : $page->the_post();
+              if(have_rows('articles_stories')):
+                    while(have_rows('articles_stories')): the_row();
+                       $res['banner_image'] = get_sub_field('banner_image');
+                       $res['title'] =  get_sub_field('title'); 
+                       $res['description'] =  get_sub_field('description');
+                       $res['content_section'] = get_sub_field('content_section');
+                       if(have_rows('related_articles')):
+                           while(have_rows('related_articles')):the_row();
+                                $relatedArticle =get_sub_field('article_name');
+                                $articleGroup = get_field('articles_stories',$relatedArticle->ID);
+                                $res['related_articles1'][] = [ 
+                                    'id' => $relatedArticle->ID,
+                                    'banner_image' => $articleGroup['banner_image']['url'],
+                                    'article_title' => $articleGroup['title'],
+                                    'article_url' => strtolower(str_replace(' ','-',$articleGroup['title'])),
+                                    'description' => substr(strip_tags($articleGroup['description']),0,90)
+
+                                ];
+
+                                // while(have_rows($articleGroup->value)):the_row();
+
+                                // endwhile;
+                                // echo "<pre>";
+                                // print_r($articleGroup->title);
+                                // while():the_row();
+                                //       $res['related_articles'][] = [ 
+                                //            'banner_image' => get_sub_field('banner_image')
+                                        
+                                //       ] ;
+                                // endwhile;
+                                //$res['related_articles'][] = get_field_object('articles_stories',$relatedArticle->ID);
+                           endwhile;
+                       endif;
+
+                 endwhile;
+              endif;
+               
+        endwhile;
+      
+    endif;
+    return $res;
+}
+
 function get_information($data){
     global $wp;
     global $post;
@@ -293,36 +350,7 @@ function get_article_stories($data){
     return $res;
 }
 
-function get_article_slug($data){
-    global $wp;
-    global $post;
-    $title = str_replace('-', ' ', $data['slug']);
-    $args   =   array(
-                'post_type'         =>  'articles-stories',
-                'post_status'       =>  'publish',
-                'id' => $title
-                );
-  //  print_r($args); 
-  
-    $res = [];
-    $page = new WP_Query( $args );
-  
-    if($page->have_posts()):
-       // while ( $page->have_posts() ) :
-            $page->the_post();
-            $id = get_the_ID();
-            $date = get_the_date( 'Y-m-d H:i:s', get_the_ID() );
-            $slug = get_post_field( 'post_name', get_the_ID() );
-            $res[] = ['title' =>  get_the_title() , 
-                       'post_name' => $slug,
-                        'date' => $date,
-                        // 'feature_image' => wp_get_attachment_image_src( get_post_thumbnail_id( ()) )];
-                        'feature_image' => get_the_post_thumbnail_url(get_the_ID(),'full')];
-       // endwhile;
-    endif;
-    
-    return $res;
-}
+
 
 function send_contact_us(WP_REST_Request $request){
   
@@ -387,19 +415,14 @@ add_action('rest_api_init', function() {
       'callback' => 'send_contact_us'
     )
   );
-  register_rest_route( 'wl/v1', '/articles', 
+  register_rest_route( 'wl/v1', '/article-stories', 
     array(
         'methods'  => 'GET',
-        'callback' => 'get_article_stories'
+        'callback' => 'get_articles_stories'
     )
     );
 
- register_rest_route( 'wl/v1', '/article-slug/(?P<slug>[a-zA-Z0-9-]+)', 
-    array(
-        'methods'  => 'GET',
-        'callback' => 'get_article_slug'
-    )
-    );
+ 
 
 });
 
