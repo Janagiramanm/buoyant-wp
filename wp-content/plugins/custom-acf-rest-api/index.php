@@ -269,9 +269,38 @@ function get_information($data){
 function get_article_stories($data){
     global $wp;
     global $post;
+
     $args   =   array(
                 'post_type'         =>  'articles-stories',
                 'post_status'       =>  'publish',
+                );
+  
+    $res = [];
+    $page = new WP_Query( $args );
+  
+    if($page->have_posts()):
+        while ( $page->have_posts() ) :
+            $page->the_post();
+            $id = get_the_ID();
+            $date = get_the_date( 'Y-m-d H:i:s', get_the_ID() );
+            $res[] = ['title' =>  get_the_title() , 
+                        'date' => $date,
+                        // 'feature_image' => wp_get_attachment_image_src( get_post_thumbnail_id( ()) )];
+                        'feature_image' => get_the_post_thumbnail_url(get_the_ID(),'full')];
+        endwhile;
+    endif;
+    
+    return $res;
+}
+
+function get_article_slug($data){
+    global $wp;
+    global $post;
+    $id = str_replace('-', ' ', $data['id']);
+    $args   =   array(
+                'post_type'         =>  'articles-stories',
+                'post_status'       =>  'publish',
+                'ID' => $id
                 );
   
     $res = [];
@@ -361,6 +390,14 @@ add_action('rest_api_init', function() {
         'callback' => 'get_article_stories'
     )
     );
+
+ register_rest_route( 'wl/v1', '/article-slug/(?P<id>[0-9-]+)', 
+    array(
+        'methods'  => 'GET',
+        'callback' => 'get_article_slug'
+    )
+    );
+
 });
 
 // function add_custom_headers() {
