@@ -300,7 +300,7 @@ function get_article_slug($data){
     $args   =   array(
                 'post_type'         =>  'articles-stories',
                 'post_status'       =>  'publish',
-                'name' => $title
+                'id' => $title
                 );
   
     $res = [];
