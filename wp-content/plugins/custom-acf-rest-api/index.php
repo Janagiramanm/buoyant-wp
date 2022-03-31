@@ -238,7 +238,7 @@ function get_article($data){
         endwhile;
       
     endif;
-    return $res;
+    return $res; 
 }
 
 function get_information($data){
