@@ -298,6 +298,7 @@ function get_article_slug($data){
     global $post;
     $id = str_replace('-', ' ', $data['slug']);
     $args   =   array(
+                'post_status'       =>  'publish',
                 'ID' => $id
                 );
   
