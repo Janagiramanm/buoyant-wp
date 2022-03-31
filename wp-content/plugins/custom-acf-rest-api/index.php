@@ -302,7 +302,7 @@ function get_article_slug($data){
                 'post_status'       =>  'publish',
                 'id' => $title
                 );
-    print_r($args);
+    print_r($args); 
   
     $res = [];
     $page = new WP_Query( $args );
