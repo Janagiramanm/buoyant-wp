@@ -302,13 +302,13 @@ function get_article_slug($data){
                 'post_status'       =>  'publish',
                 'id' => $title
                 );
-    print_r($args); 
+  //  print_r($args); 
   
     $res = [];
     $page = new WP_Query( $args );
   
     if($page->have_posts()):
-        while ( $page->have_posts() ) :
+       // while ( $page->have_posts() ) :
             $page->the_post();
             $id = get_the_ID();
             $date = get_the_date( 'Y-m-d H:i:s', get_the_ID() );
@@ -318,7 +318,7 @@ function get_article_slug($data){
                         'date' => $date,
                         // 'feature_image' => wp_get_attachment_image_src( get_post_thumbnail_id( ()) )];
                         'feature_image' => get_the_post_thumbnail_url(get_the_ID(),'full')];
-        endwhile;
+       // endwhile;
     endif;
     
     return $res;
